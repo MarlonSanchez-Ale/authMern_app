@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# Inicializacion de tailwindcss
+Se instala con el siguiente comando -  npm install -D tailwindcss postcss autoprefixer
+Luego se inicializa con npx tailwindcss init -p
+
+Se crearan los siguiente archivos: 
+- postcss.config.js
+- tailwind.config.js

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Username from './components/Username';
+import Username from './components/username';
 import Password from './components/Password';
 import Recovery from './components/Recovery';
 import Profile from './components/Profile';

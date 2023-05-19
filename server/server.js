@@ -1,34 +1,37 @@
+
 import express from "express";
-import cors from 'cors';
-import morgan from 'morgan'
-import connect from "./database/conn.js";
+import { Sequelize, DataTypes } from 'sequelize'
+import validarConexion from "./database/connection.js";
+import Usuario from "./model/users.js";
+import router from './router/route.js'
 
+// Creación del servidor Express
 const app = express();
+const port = 3000;
 
-app.use(express.json());
-app.use(cors());
-app.use(morgan('tiny'));
-app.disable('x-powered-by');
+/** api routes */
+app.use('/api', router)
 
-const port = 8080;
+// Ruta para obtener todos los usuarios
+/*app.get('/users', async (req, res) => {
+  try {
+    const users = await Usuario.findAll();
+    res.json(users);
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});*/
 
-// HTTP GET REQUEST
-app.get('/', (req, res) => {
-    res.status(201).json("Home GET Request")
-})
-
-
-// Start server only when we have valid connection 
-connect().then(() => {
+// Iniciar el servidor
+validarConexion().then(() => {
     try {
-
-        //Start server
         app.listen(port, () => {
-            console.log(`Server connnected to http://localhost:${port}`)
+            console.log(`Server connected to http://localhost:${port}`);
         })
-
     } catch (error) {
-        console.log('Cannot connnect to the server')
+        console.log('Cannot connect to the server')
     }
+}).catch(error => {
+    console.log("Invalid database connection...!");
 })
-
